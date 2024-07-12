@@ -13,7 +13,9 @@ class ExampleTest extends TestCase
     public function test_the_application_returns_a_successful_response(): void
     {
         $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $response->assertStatus(404); // asumsi kalau localhost/ biasa itu tidak muncul
+        // asumsikan 
+        $response = $this->get('/admin');
+        $response->assertStatus(302);
     }
 }

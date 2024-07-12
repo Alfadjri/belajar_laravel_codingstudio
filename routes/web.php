@@ -5,6 +5,20 @@ use Illuminate\Support\Facades\Route;
 // panggil controller
 use App\Http\Controllers\Route\Login\Logincontroller as C_login;
 use App\Http\Controllers\Route\Admin\adminController as C_admin;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+Route::get('/user', function (Request $request) {
+    if ($request->header('Accept') === 'application/jsons') {
+        return response()->json(['error' => 'Unsupported Accept header'], 406);
+    }
+
+    // Your logic for the endpoint goes here
+
+    return response()->json(['message' => 'Success'],200);
+});
+// code yang di buat sekarang harus berubah jadi 403 kalau ada header nya application/json
+
 Route::group(['prefix' => 'login'],function(){
     Route::get('/',[C_Login::class,'view_login'])->name('login');
     Route::post('/',[C_Login::class,'login_send'])->name('login.send');

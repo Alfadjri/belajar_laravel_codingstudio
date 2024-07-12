@@ -11,6 +11,13 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <!-- Menambahkan file unit test yang akan di buat -->
+        <testsuite name="register">
+            <file>tests/Feature/register.php</file>
+        </testsuite>
+        <!-- End  -->
+        <!-- untuk migrasi database testing -->
+        <!-- php artisan migrate env=testing seed -->
     </testsuites>
     <source>
         <include>
@@ -18,11 +25,11 @@
         </include>
     </source>
     <php>
-        <env name="APP_ENV" value="testing"/>
+        <env name="APP_ENV" value="laravel.test"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="CACHE_STORE" value="array"/>
-        <env name="DB_DATABASE" value="testing"/>
+        <env name="DB_DATABASE" value="laravel"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
